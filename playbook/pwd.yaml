@@ -1,11 +1,11 @@
 ---
-- name: Create a Directory on Remote Hosts
+- name: Create Ambulance Directory on Remote Hosts
   hosts: all   # Specify your hosts group or you can use 'all' to target all hosts in your inventory
   become: true # Optional: Use this if you need to run the command as superuser on the remote system
 
   tasks:
-    - name: Create a new directory
+    - name: Create ambulance directory in /home/zyed
       file:
-        path: "~/new_directory"  # Specify the full path where you want the directory
+        path: "/home/zyed/ambulance"  # The full path to the directory to be created
         state: directory
         mode: '0755'  # Set the permissions of the new directory (optional)
