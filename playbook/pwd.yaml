@@ -1,5 +1,13 @@
-- name: Test SSH Connection
-  hosts: all
+---
+- name: Display Current Working Directory
+  hosts: all   # Specify your hosts group or you can use 'all' to target all hosts in your inventory
+  become: true # Optional: Use this if you need to run the command as superuser on the remote system
+
   tasks:
-  - name: Ping Test
-    ping:
+    - name: Get current working directory
+      command: pwd  # This runs the 'pwd' command
+      register: pwd_output  # This saves the command output to a variable called 'pwd_output'
+
+    - name: Print the working directory
+      debug:  # The debug module prints debug messages
+        msg: "The current working directory is: {{ pwd_output.stdout }}"  # Use the registered variable's stdout to get the output of 'pwd'
