@@ -1,6 +1,7 @@
 ---
 - name: Display Current Working Directory
   hosts: all
+  become: true
   tasks:
     - name: Get current working directory
       command: pwd
