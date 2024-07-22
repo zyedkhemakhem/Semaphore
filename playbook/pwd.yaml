@@ -1,0 +1,11 @@
+---
+- name: Display Current Working Directory
+  hosts: all
+  tasks:
+    - name: Get current working directory
+      command: pwd
+      register: pwd
+
+    - name: Print the working directory
+      debug:
+        msg: "The current working directory is: {{ pwd.stdout }}"
