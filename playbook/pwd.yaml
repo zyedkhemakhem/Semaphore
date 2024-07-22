@@ -1,11 +1,11 @@
 ---
-- name: Create Ambulance Directory on Remote Hosts
-  hosts: all   # Specify your hosts group or you can use 'all' to target all hosts in your inventory
-  become: true # Optional: Use this if you need to run the command as superuser on the remote system
-
+- name: Example playbook to run pwd command
+  hosts: all
   tasks:
-    - name: Create ambulance directory in /home/zyed
-      file:
-        path: "/home/zyed/ambulance"  # The full path to the directory to be created
-        state: directory
-        mode: '0755'  # Set the permissions of the new directory (optional)
+    - name: Run pwd command
+      command: pwd
+      register: pwd_output
+
+    - name: Display the current working directory
+      debug:
+        msg: "The current working directory is {{ pwd_output.stdout }}"
